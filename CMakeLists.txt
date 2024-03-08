@@ -10,20 +10,6 @@ endif()
 
 option(TLIB_PROFILING_BUILD "Build optimized for profiling" OFF)
 
-if(TLIB_PROFILING_BUILD)
-    add_definitions(
-        -fno-omit-frame-pointer
-        -g3
-    )
-elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
-    add_definitions(
-        -fomit-frame-pointer
-    )
-    add_compile_definitions(
-        INLINE_LEVEL=5
-    )
-endif()
-
 add_definitions(
     -fPIC
     -Werror-implicit-function-declaration
@@ -51,6 +37,20 @@ list(FILTER SOURCES EXCLUDE REGEX ".*\/.*F80.*\.c")
 list(FILTER SOURCES EXCLUDE REGEX ".*\/.*F128.*\.c")
 list(FILTER SOURCES EXCLUDE REGEX ".*\/.*f128.*\.c")
 list(FILTER SOURCES EXCLUDE REGEX ".*\/.*BF16.*\.c")
+
+if(TLIB_PROFILING_BUILD)
+    add_definitions(
+        -fno-omit-frame-pointer
+        -g3
+    )
+elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
+    add_definitions(
+        -fomit-frame-pointer
+    )
+    add_compile_definitions(
+        INLINE_LEVEL=5
+    )
+endif()
 
 add_library(
     softfloat-3 STATIC
