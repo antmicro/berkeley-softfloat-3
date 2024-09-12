@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.6)
+cmake_minimum_required(VERSION 3.12)
 
 project(softfloat-3)
 
@@ -79,7 +79,7 @@ else()
 endif()
 
 add_library(
-    softfloat-3 STATIC
+    softfloat-3 OBJECT
     ${SOURCES}
 )
 target_include_directories(
