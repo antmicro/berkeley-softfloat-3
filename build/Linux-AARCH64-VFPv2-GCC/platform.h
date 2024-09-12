@@ -50,6 +50,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *----------------------------------------------------------------------------*/
 // The clz builtins causes issues with aarch64 debug builds so leaving it disabled
 //#define SOFTFLOAT_BUILTIN_CLZ 1
-#define SOFTFLOAT_INTRINSIC_INT128 1
+//#define SOFTFLOAT_INTRINSIC_INT128 1
 #include "opts-GCC.h"
 
