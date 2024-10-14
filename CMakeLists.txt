@@ -5,8 +5,6 @@ project(softfloat-3)
 set(HOST_ARCH "i386" CACHE STRING "Host architecture")
 set(HOST_WORD_SIZE "64" CACHE STRING "Host word size")
 
-option(TLIB_PROFILING_BUILD "Build optimized for profiling" OFF)
-
 if(NOT SOFTFLOAT_SPECIALIZED_ARCHITECTURE)
     message(FATAL_ERROR "Specialized architecture is not set.")
 endif()
@@ -49,20 +47,6 @@ elseif(HOST_ARCH STREQUAL "arm" AND HOST_WORD_SIZE STREQUAL "32")
     set(FAST_INT64 OFF)
 else()
     message(FATAL_ERROR "The ${HOST_ARCH} ${HOST_WORD_SIZE}-bit host architecture isn't supported.")
-endif()
-
-if(TLIB_PROFILING_BUILD)
-    add_definitions(
-        -fno-omit-frame-pointer
-        -g3
-    )
-elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
-    add_definitions(
-        -fomit-frame-pointer
-    )
-    add_compile_definitions(
-        INLINE_LEVEL=5
-    )
 endif()
 
 if(FAST_INT64)
