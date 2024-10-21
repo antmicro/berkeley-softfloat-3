@@ -5,13 +5,12 @@ project(softfloat-3)
 set(HOST_ARCH "i386" CACHE STRING "Host architecture")
 set(HOST_WORD_SIZE "64" CACHE STRING "Host word size")
 
-set(SPECIALIZED_ARCHITECTURE ${SOFTFLOAT_SPECIALIZED_ARCHITECTURE} CACHE STRING "The architecture that Softfloat mimics.")
+option(TLIB_PROFILING_BUILD "Build optimized for profiling" OFF)
 
-if(NOT SPECIALIZED_ARCHITECTURE)
+if(NOT SOFTFLOAT_SPECIALIZED_ARCHITECTURE)
     message(FATAL_ERROR "Specialized architecture is not set.")
 endif()
-
-option(TLIB_PROFILING_BUILD "Build optimized for profiling" OFF)
+set(SPECIALIZED_ARCHITECTURE ${SOFTFLOAT_SPECIALIZED_ARCHITECTURE} CACHE STRING "The architecture that Softfloat mimics.")
 
 add_definitions(
     -fPIC
