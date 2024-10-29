@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 
-project(softfloat-3)
+project (softfloat-3 LANGUAGES C)
 
 set(HOST_ARCH "i386" CACHE STRING "Host architecture")
 set(HOST_WORD_SIZE "64" CACHE STRING "Host word size")
