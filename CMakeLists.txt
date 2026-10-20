@@ -22,7 +22,8 @@ add_compile_definitions(
 )
 
 set(FAST_INT64 ON)
-set(PRIVATE_INCLUDES source/${SPECIALIZED_ARCHITECTURE})
+set(PRIVATE_INCLUDES)
+set(SPECIALIZED_INCLUDES source/${SPECIALIZED_ARCHITECTURE})
 
 file(GLOB SOURCES source/*.c)
 file(GLOB SPECIALIZED_SOURCES source/${SPECIALIZED_ARCHITECTURE}/*.c)
@@ -72,4 +73,5 @@ target_include_directories(
 target_include_directories(
     softfloat-3 PUBLIC
     source/include
+    ${SPECIALIZED_INCLUDES}
 )
